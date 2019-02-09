@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs">
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-2" />
+<meta http-equiv="content-language" content="cs" />
+
+<title>Webis::Úvod do operačních systémů</title>
+
+<meta name="webmaster" content="Michal Turek; http://woq.nipax.cz/" />
+<meta name="copyright" content="Copyright (c) 2007 Michal Turek" />
+<meta name="robots" content="all, follow" />
+<meta name="resource-type" content="document" />
+
+<style type="text/css" media="all">@import "style.css";</style>
+<link href="img/website/ico.png" rel="shortcut icon" type="image/x-icon" />
+</head>
+
+<body>
+
+
+
+<div id="header">
+
+<div id="header_left">
+<a href="http://cs.felk.cvut.cz/webis/"><img src="img/website/k336_sm.png" style="width: 120px; height: 100px;" alt="K336 Logo" /></a>
+</div>
+
+<div id="header_right">
+<p><a href="">Česky</a>/<a href="">English</a></p>
+<form action="p_fulltext.php" method="post" onsubmit="if(!this.najit.value || this.najit.value=='výraz ...') { alert('Byl zadán prázdný řetězec!'); this.najit.focus(); return false; }">
+<div><input type="text" name="najit" size="12" value="výraz ..." onclick="this.value=''" /></div>
+<div><input type="submit" value="Najít" /></div>
+</form>
+</div><!-- div id="header_right" -->
+
+<div id="header_middle">
+<p>Department of Computer Science and Engineering<br />FEE CTU Prague</p>
+<p>Katedra počítačů<br />FEL ČVUT Praha</p>
+</div>
+
+<div class="cleaner"></div>
+</div><!-- div id="header" -->
+
+
+
+<div id="main">
+
+<div id="middle" class="column">
+<div id="middle_in">
+
+<h1>Úvod do operačních systémů [Y36UOS]</h1>
+
+<p class="description">
+Předmět denního studia, v tomto semestru se vyučuje<br />
+Rozsah (přednášky + cvičení): 2+2<br />
+Zakončení: Zápočet, zkouška<br />
+<a href="http://www.feld.cvut.cz/FEE/education/rozvrhy/predmety/01/88/p18877.html" class="blank" title="http://www.feld.cvut.cz/FEE/education/rozvrhy/predmety/01/88/p18877.html">rozvrh na FEL</a></li>
+</p>
+
+
+<h2 id="anotace">Anotace</h2>
+
+<p>Seznámení se základními principy operačních systémů se zaměřením na UNIX a MS Windows. Získání znalostí pokročilého uživatele a jejich procvičení.</p>
+
+
+<h2 id="osnova">Osnova</h2>
+
+<ol>
+<li>Úvod. Historie OS Unix. Architektura OS Unix. Interpret příkazů SHELL. Zpracovní příkazové řádky. Metaznaky. Aliasy.</li>
+<li>Systémy souborů OS UNIX. Nástroje pro práci se souborovým systémem.</li>
+<li>Filtry.</li>
+<li>Regulární výrazy. Filtry grep, sed a awk.</li>
+<li>Identita uživatelů, procesů a souborů. Přístupová práva a jejich nastavení.</li>
+<li>Procesy a vlákna (vznik, stavy, atributy). Signály. Nástroje pro práci s procesy a vlákny.</li>
+<li>Proměnné. Návratový kód. Příkazy pro větvení výpočtu. Cykly. Předčasné ukončení cyklu.</li>
+<li>Parametry skriptu. Vstup a výstup.</li>
+<li>Síťové rozhraní.</li>
+<li>X Window. Secure shell.</li>
+<li>Historie MS Windows. Architektura OS. Grafické a znakové rozhraní.</li>
+<li>Systémy souborů MS Windows. Nástroje pro práci se souborovým systémem.</li>
+<li>Síťové rozhraní. Bezpečnost.</li>
+</ol>
+
+
+<h2 id="osnova_cviceni">Osnova cvičení</h2>
+
+<ol>
+<li>Úvod, práce v grafickém prostředí, jednoduché příkazy.</li>
+<li>Seznámení se shellem, editor vi.</li>
+<li>Základní příkazy pro práci se soubory.</li>
+<li>Standardní vstupy a výstupy procesu, filtry.</li>
+<li>Regulární výrazy. Programy grep, sed a awk.</li>
+<li>Přístupová práva, program find, zálohováni a komprese dat.</li>
+<li>Práce s procesy, návratový kód, příkaz test.</li>
+<li>Proměnné, řídící příkazy shellu, bloky příkazů, funkce, numerické výpočty.</li>
+<li>Uživatelský vstup, zpracování přepínačů, psaní a ladění skriptů, plánování úloh.</li>
+<li>Procvičení skriptů, test.</li>
+<li>Secure shell. Vzdálené přihlášení do Windows XP.</li>
+<li>Procesy. Systém souborů. Sítě.</li>
+<li>Náhradní testy. Udělění zápočtu.</li>
+</ol>
+
+
+<h2 id="literatura">Literatura</h2>
+
+<ol>
+<li>Rozumíme Unixu, Jon Lasser, Computer Press, ISBN 80-7226-706-X,2002</li>
+<li>Manuálové stránky Unixu</li>
+<li>S Windows XP</li>
+<li>Mistrovství v MS Windows XP, Ed Bott, Carl Siechert, Computer Press, ISBN 80-7226-693-4, 2002</li>
+<li>MS Windows Resource Kit Site: http://www.microsoft.com</li>
+</ol>
+
+
+<h2 id="pozadavky">Požadavky</h2>
+
+<p>Zakončení předmětu je podmíněno dosažením stanoveného součtu bodového hodnocení ze cvičení, zkouškové písemky a samostatné práce.</p>
+
+
+<h2 id="prednasejici">Přednášející</h2>
+
+<ul>
+<li><a href="zdarek_jan.htm">Ing. Jan Trdlička, Ph.D.</a>, <a href="http://www.feld.cvut.cz/FEE/education/rozvrhy/predmety/01/88/p18877.html" class="blank" title="http://www.feld.cvut.cz/FEE/education/rozvrhy/predmety/01/88/p18877.html">rozvrh na FEL</a></li>
+<li><a href="zdarek_jan.htm">Ing. Jan Zajíc, CSc.</a>, <a href="http://www.feld.cvut.cz/FEE/education/rozvrhy/predmety/01/88/p18877.html" class="blank" title="http://www.feld.cvut.cz/FEE/education/rozvrhy/predmety/01/88/p18877.html">rozvrh na FEL</a></li>
+</ul>
+
+
+<h2 id="cvicici">Cvičící</h2>
+
+<ul>
+<li><a href="zdarek_jan.htm">Ing. Lukáš Bařinka</a>, <a href="http://www.feld.cvut.cz/FEE/education/rozvrhy/predmety/01/88/p18877.html" class="blank" title="http://www.feld.cvut.cz/FEE/education/rozvrhy/predmety/01/88/p18877.html">rozvrh na FEL</a></li>
+<li><a href="zdarek_jan.htm">Ing. Jan Trdlička, Ph.D.</a>, <a href="http://www.feld.cvut.cz/FEE/education/rozvrhy/predmety/01/88/p18877.html" class="blank" title="http://www.feld.cvut.cz/FEE/education/rozvrhy/predmety/01/88/p18877.html">rozvrh na FEL</a></li>
+<li><a href="zdarek_jan.htm">Ing. Michal Šoch, Ph.D.</a>, <a href="http://www.feld.cvut.cz/FEE/education/rozvrhy/predmety/01/88/p18877.html" class="blank" title="http://www.feld.cvut.cz/FEE/education/rozvrhy/predmety/01/88/p18877.html">rozvrh na FEL</a></li>
+<li><a href="zdarek_jan.htm">Ing. Jan Žďárek</a>, <a href="http://www.feld.cvut.cz/FEE/education/rozvrhy/predmety/01/88/p18877.html" class="blank" title="http://www.feld.cvut.cz/FEE/education/rozvrhy/predmety/01/88/p18877.html">rozvrh na FEL</a></li>
+<li><a href="zdarek_jan.htm">RNDr. Dana Čermáková</a>, <a href="http://www.feld.cvut.cz/FEE/education/rozvrhy/predmety/01/88/p18877.html" class="blank" title="http://www.feld.cvut.cz/FEE/education/rozvrhy/predmety/01/88/p18877.html">rozvrh na FEL</a></li>
+<li><a href="zdarek_jan.htm">Ing. Zdeněk Muzikář, CSc.</a>, <a href="http://www.feld.cvut.cz/FEE/education/rozvrhy/predmety/01/88/p18877.html" class="blank" title="http://www.feld.cvut.cz/FEE/education/rozvrhy/predmety/01/88/p18877.html">rozvrh na FEL</a></li>
+<li><a href="zdarek_jan.htm">RNDr. Igor Čermák, CSc.</a>, <a href="http://www.feld.cvut.cz/FEE/education/rozvrhy/predmety/01/88/p18877.html" class="blank" title="http://www.feld.cvut.cz/FEE/education/rozvrhy/predmety/01/88/p18877.html">rozvrh na FEL</a></li>
+<li><a href="zdarek_jan.htm">Ing. Milan Šimánek, Ph.D.</a>, <a href="http://www.feld.cvut.cz/FEE/education/rozvrhy/predmety/01/88/p18877.html" class="blank" title="http://www.feld.cvut.cz/FEE/education/rozvrhy/predmety/01/88/p18877.html">rozvrh na FEL</a></li>
+<li><a href="zdarek_jan.htm">Ing. Jan Zajíc, CSc.</a>, <a href="http://www.feld.cvut.cz/FEE/education/rozvrhy/predmety/01/88/p18877.html" class="blank" title="http://www.feld.cvut.cz/FEE/education/rozvrhy/predmety/01/88/p18877.html">rozvrh na FEL</a></li>
+</ul>
+
+
+</div><!-- div id="middle_in" -->
+</div><!-- div id="middle" -->
+
+
+
+<div id="left" class="column">
+<div class="sidebar_in">
+<ul class="lmenu">
+<li><a href="index.htm">Domů</a></li>
+<li><a href="about.htm">O katedře</a></li>
+<li><a href="todo.htm">Aktuality</a></li>
+<li><a href="todo.htm">Fotogalerie</a></li>
+<li><a href="contact.htm">Kontakt</a></li>
+</ul>
+
+
+<ul class="lmenu">
+<li><a href="people.htm">Lidé</a>
+</li><!-- Lidé -->
+
+
+
+<li><a href="courses.htm">Předměty</a>
+
+<ul class="lsubmenu">
+<li><a href="courses.htm">Všechny</a></li>
+<li><a href="courses.htm">Aktuální</a></li>
+<li><a href="courses.htm">Neučí se</a></li>
+</ul>
+
+<ul class="lsubmenu">
+<li><a href="courses.htm">Všechny</a></li>
+<li><a href="courses.htm">Denní</a></li>
+<li><a href="courses.htm">Dálkové</a></li>
+<li><a href="courses.htm">Anglické</a></li>
+<li><a href="courses.htm">Pro Ph. D.</a></li>
+</ul>
+
+<ul class="lsubmenu">
+<li><a href="courses.htm">Všechny</a></li>
+<li><a href="courses.htm">Názvy</a></li>
+<li><a href="courses.htm">Zkraty</a></li>
+</ul>
+
+</li><!-- Předměty -->
+
+<li><a href="research.htm">Výzkum</a></li>
+<li><a href="offers.htm">Nabídky</a></li>
+<li><a href="todo.htm">Granty</a></li>
+<li><a href="todo.htm">Závěrečné práce</a></li>
+</ul>
+
+
+<ul class="lmenu">
+<li><a href="todo.htm">Pro uchazeče</a></li>
+<li><a href="todo.htm">Statistiky</a></li>
+<li><a href="todo.htm">Provozní záležitosti</a></li>
+<li><a href="todo.htm">FAQ</a></li>
+</ul>
+
+
+<ul class="lmenu">
+<li><a href="http://cs.felk.cvut.cz/webis/u3v/u3v.html" class="blank" title="http://cs.felk.cvut.cz/webis/u3v/u3v.html">U3V</a></li>
+<li><a href="http://info336.felk.cvut.cz/" class="blank" title="http://info336.felk.cvut.cz/">Pro domácí</a></li>
+<li><a href="http://www.cvut.cz/en" class="blank" title="http://www.cvut.cz/en">ČVUT</a></li>
+<li><a href="http://www.fel.cvut.cz/en" class="blank" title="http://www.fel.cvut.cz/en">FEL</a></li>
+</ul>
+</div><!-- div id="sidebar_in" -->
+</div><!-- div id="left" -->
+
+
+
+<div id="right" class="column">
+<div class="sidebar_in">
+
+<h4 class="rmenu_h">Y36UOS</h4>
+
+<ul class="rmenu">
+<li><a href="#anotace">Anotace</a></li>
+<li><a href="#osnova">Osnova</a></li>
+<li><a href="#osnova_cviceni">Osnova cvičení</a></li>
+<li><a href="#literatura">Literatura</a></li>
+<li><a href="#pozadavky">Požadavky</a></li>
+<li><a href="#prednasejici">Přednášející</a></li>
+<li><a href="#cvicici">Cvičící</a></li>
+</ul>
+
+</div><!-- div id="sidebar_in" -->
+</div><!-- div id="right" -->
+
+
+
+</div><!-- div id="main" -->
+
+
+
+<div id="footer">
+Copyright &copy; 2007 <a href="http://woq.nipax.cz/">Michal Turek</a> (design)
+</div><!-- div id="footer" -->
+
+
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+<div class="comment">
+<div class="datetime">Tue, 17 Feb 09 20:25:43 +0100</div>
+<h3>kb</h3>
+<p>zosity kupuj napriklad: тетрдь ученничвская, 18 листов (линия), 10 тетрадей в пачке. ОАО «Полтоняно-Заводская бумажная фабрика» ;) dnes som kupoval jeden asi za 2 ruble 50 kopejek</p>
+</div><!-- div class="comment" -->
+
+<div class="comment">
+<div class="datetime">Mon, 23 Feb 09 00:18:17 +0100</div>
+<h3>tlw</h3>
+<p>w000t :D tohle je zatim nelepsi post :D moc se bavim nad tou urovni ty zakla.. teda, vysoky skoly a sesity A5 s medvidkem Pu jsou neodolatelny. Keep 'em coming ;]</p>
+</div><!-- div class="comment" -->
+

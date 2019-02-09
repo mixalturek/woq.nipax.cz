@@ -1,0 +1,6 @@
+<div class="comment">
+<div class="datetime">Wed, 11 Feb 09 13:09:08 +0100</div>
+<h3>kb</h3>
+<p>-10 je v pohode ;) aj ked tych 7hodin je asi docela dost, tak dlho osm tu este vonku nebol :-) no, ale dnes tu bolo -27 (aspon tak ukazoval teplomer pred obchodom) a po tych 15 minutach chodze som mal docela dost. je to dost blby pocit, ked ti zamrzaju nosne dierky a omrza obocie, pretoze si na nehho dychas cez sal, aby ti nezamrzol nos ;-))</p>
+</div><!-- div class="comment" -->
+

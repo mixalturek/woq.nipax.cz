@@ -1,0 +1,26 @@
+<div class="comment">
+<div class="datetime">Sat, 24 Jan 09 15:51:01 +0100</div>
+<h3>PetrZ</h3>
+<p>Michale, překlepeš únor a bude dobře :))</p>
+</div><!-- div class="comment" -->
+
+<div class="comment">
+<div class="datetime">Sun, 25 Jan 09 10:35:09 +0100</div>
+<h3>Michal</h3>
+<p>Nevim, Иван se v tom začíná vyžívat... ;-)<br />
+<br />
+порадуйся прогнозу погоды =) приедешь и почувствуешь настоящие сибирские морозы =) http://www.gismeteo.ru/mtowns/29574.htm</p>
+</div><!-- div class="comment" -->
+
+<div class="comment">
+<div class="datetime">Sun, 25 Jan 09 22:10:12 +0100</div>
+<h3>Radim Křůpala</h3>
+<p>Čau Michale, tak koukám že si celkem podnikavý :D Zajímavé prostředí, fandím ti a ať se daří ;-) Měj se</p>
+</div><!-- div class="comment" -->
+
+<div class="comment">
+<div class="datetime">Tue, 27 Jan 09 20:09:01 +0100</div>
+<h3>kb</h3>
+<p>Nie si v tom sam, v den mojho priletu ma byt -41/-31 … predpokladam, ze ide o noc/den, takze o 6tej rano bude mozno -35 a po… sa z toho!</p>
+</div><!-- div class="comment" -->
+

@@ -1,0 +1,84 @@
+<?php
+// cd ~/.centericq/
+// chmod 755 0* 1* 2* 3* 4* 5* 6* 7* 8* 9*
+
+define('ICQDIR', '/home/user/.centericq');
+
+if($_SERVER['REMOTE_ADDR'] != '127.0.1.1')
+{
+	echo 'Ksic!';
+	exit();
+}
+
+Header('Content-Type: text/html; charset=iso-8859-2');
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs">
+<head>
+<title>ICQ status indicator</title>
+
+<style media="all">
+body
+{
+	font-family: Verdana, "Bitstream Vera Sans", Geneva, sans-serif;
+	font-size: 9pt;
+	text-align: justify;
+	line-height: 1.8em;
+}
+
+h1		{ text-align: center; }
+table		{ max-width: 100%; }
+tr		{ background-color: rgb(230,230,230); }
+tr:hover	{ background-color: rgb(190,200,230); }
+th, td		{ padding-left: 10px; padding-right: 10px; }
+th		{ border: 1px solid rgb(160,160,160); }
+a:hover		{ color: red; }
+.img		{ text-align: center; }
+.autor		{ font-weight: bold; text-align: center; }
+.todo		{ color: red; }
+.todo:before	{ content: "TODO: "}
+
+img		{ vertical-align: middle; }
+#footer		{ position: fixed; top: 0px; right: 20px; text-align: right; }
+</style>
+
+</head>
+<body>
+
+
+<?php
+function displayContacts($icqdir)
+{
+	$dirhandle = opendir($icqdir);
+
+	echo "<table>\n";
+	echo "<tr><th>S</th> <th>Nick</th> <th>Name</th> <th>Number</th></tr>\n";
+
+	while (($file = readdir($dirhandle)))
+	{
+		if(ereg('[0-9]', $file))
+		{
+			$userinfo = file("$icqdir/$file/info");
+
+			echo "<tr><td><img src=\"http://status.icq.com/online.gif?icq=$file&img=5\" /></td> <td>$userinfo[0]</td> <td>$userinfo[1] $userinfo[2]</td> <td>$file</td></tr>\n";
+
+		}
+	}
+	echo "</table>\n";
+
+	closedir($dirhandle);
+}
+
+displayContacts(ICQDIR);
+?>
+
+
+<p id="footer">
+ICQ status indicator for centericq/centerim<br />
+Copyright &copy; 2007 <a href="http://woq.nipax.cz/">Michal Turek</a><br />
+License: GNU GPL v2<br />
+2007-12-09
+</p>
+
+</body>
+</html>

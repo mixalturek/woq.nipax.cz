@@ -1,0 +1,40 @@
+<div class="comment">
+<div class="datetime">Sat, 28 Mar 09 06:54:33 +0100</div>
+<h3>Иван</h3>
+<p>Весна, говно поплыло =)</p>
+</div><!-- div class="comment" -->
+
+<div class="comment">
+<div class="datetime">Sat, 28 Mar 09 09:42:56 +0100</div>
+<h3>Apollinaria Ku</h3>
+<p>по моему ничего удивительного))))я такое 20 лет вижу))</p>
+</div><!-- div class="comment" -->
+
+<div class="comment">
+<div class="datetime">Sat, 28 Mar 09 19:34:23 +0100</div>
+<h3>misk0</h3>
+<p>To je teda dobry Prasnojarsk</p>
+</div><!-- div class="comment" -->
+
+<div class="comment">
+<div class="datetime">Sun, 29 Mar 09 14:31:05 +0200</div>
+<h3>Petr</h3>
+<p>Aspoň se tam nepráší ;)</p>
+</div><!-- div class="comment" -->
+
+<div class="comment">
+<div class="datetime">Sun, 29 Mar 09 16:15:29 +0200</div>
+<h3>tlw</h3>
+<p>hohooo :D mas aspon dvoje holinky? :P</p>
+</div><!-- div class="comment" -->
+
+<div class="comment">
+<div class="datetime">Mon, 30 Mar 09 10:29:28 +0200</div>
+<h3>Michal</h3>
+<p>Для Петра: práší :-(<br />
+<br />
+Včera jsem se byl na dvě, tři hodinky projít a viděl jsem na ulici kanál. A co víc, tekla do něj voda! Škoda, že jsem neměl foťák :-(, to by mi nejspíš nevěřili ani rusové...<br />
+<br />
+A jak to vnímá konkurence v Tomsku? http://peppik.blog.cz/0903/kralovstvi-za-holinky</p>
+</div><!-- div class="comment" -->
+

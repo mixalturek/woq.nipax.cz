@@ -1,0 +1,12 @@
+<div class="comment">
+<div class="datetime">Sat, 02 May 09 14:01:11 +0200</div>
+<h3>kb</h3>
+<p>a ja som to prespal :(</p>
+</div><!-- div class="comment" -->
+
+<div class="comment">
+<div class="datetime">Sat, 02 May 09 16:59:39 +0200</div>
+<h3>Michal</h3>
+<p>Takový znám už čtyři, a dobře vám tak ;-)</p>
+</div><!-- div class="comment" -->
+

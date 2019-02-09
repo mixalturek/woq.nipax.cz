@@ -1,0 +1,12 @@
+<div class="comment">
+<div class="datetime">Mon, 20 Apr 09 01:43:31 +0200</div>
+<h3>tlw</h3>
+<p>reknete lol!</p>
+</div><!-- div class="comment" -->
+
+<div class="comment">
+<div class="datetime">Sat, 25 Apr 09 07:56:10 +0200</div>
+<h3>kb</h3>
+<p>Skoda, ze v Tomsku si ubytovanie neplatime ;-) Mohla byt aspon sranda.</p>
+</div><!-- div class="comment" -->
+

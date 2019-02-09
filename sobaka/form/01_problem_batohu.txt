@@ -1,0 +1,7 @@
+<div class="comment">
+<div class="datetime">Fri, 30 Jan 09 15:10:24 +0100</div>
+<h3>tlw</h3>
+<p>OMG! jeste ze uz jsem to cet pred rokem a nemusel jsem ted :D</p>
+</div><!-- div class="comment" -->
+
+

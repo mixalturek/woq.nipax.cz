@@ -1,0 +1,6 @@
+<div class="comment">
+<div class="datetime">Sun, 29 Mar 09 16:09:03 +0200</div>
+<h3>tlw</h3>
+<p>WoW! nevidano neslychano :] To abych to taky ocihnul.</p>
+</div><!-- div class="comment" -->
+

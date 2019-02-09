@@ -1,0 +1,158 @@
+#!/usr/bin/python
+#
+# Copyright (C) 2008 Michal Turek
+# License: GNU GPL v2
+#
+# Tool for archiving directories using ZIP
+
+import getopt, sys, os, zipfile
+
+
+class MyZip:
+    ##########################################################################
+    ####
+
+    def __init__(self, filename):
+        self.m_filename = filename
+
+
+    ##########################################################################
+    ####
+
+    def listzipcontent(self):
+        if not zipfile.ZipFile.is_zipfile.ZipFile(self.m_filename):
+            print "The specified file '" + self.m_filename + "' is not valid ZIP archive"
+            return
+
+        zipf = zipfile.ZipFile(self.m_filename, 'r')
+        zipf.printdir()
+        zipf.close()
+
+
+    ##########################################################################
+    ####
+
+    def extractzip(self):
+        if not zipfile.ZipFile.is_zipfile.ZipFile(self.m_filename):
+            print "The specified file '" + self.m_filename + "' is not valid ZIP archive"
+            return
+
+        zipf = zipfile.ZipFile(self.m_filename, 'r')
+
+        listoffiles = zipf.namelist()
+        for name in listoffiles:
+            if name.endswith('/'):
+                print "Creating directory: " + name
+                try:
+                    os.makedirs(name)
+                except OSError, err:
+                    print "Warning: " + str(err)
+            else:
+                print "Extracting: " + name
+                bytes = zipf.read(name)
+                fw = open(name, 'wb')
+                fw.write(bytes)
+                fw.close()
+
+        zipf.close()
+
+
+    ##########################################################################
+    ####
+
+    def packdir(self, directory):
+        zipf = zipfile.ZipFile(self.m_filename, 'w', zipfile.ZIP_DEFLATED)
+
+        for root, dirs, files in os.walk(directory):
+            zipf.writestr(root+'/', '')
+            for name in files:
+                path = os.path.join(root, name)
+                print path
+                zipf.write(path)
+
+        zipf.close()
+
+
+##########################################################################
+####
+
+def usage():
+    print "Usage: " + sys.argv[0] + " [-h | --help] [-l | --list] [-x | --extract] [-p | --pack <directory> ] <-f | --file <filename> >"
+
+    print "\nList names of the files saved in the archive:"
+    print "\t" + sys.argv[0] + " -l -f <filename>"
+
+    print "\nExtract the files saved in the archive:"
+    print "\t" + sys.argv[0] + " -e -f <filename>"
+
+    print "\nPack the directory:"
+    print "\t" + sys.argv[0] + " -p <directory> -f <filename>"
+
+
+##########################################################################
+####
+
+def main():
+    if len(sys.argv) < 2:
+        usage()
+        sys.exit(1)
+
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], "hlep:f:", ["help", "list", "extract", "pack=" "file="])
+    except getopt.GetoptError, err:
+        print str(err)
+        usage()
+        sys.exit(1)
+
+    filename = None
+    directory = None
+    verbose = False
+    listcontent = False
+    extract = False
+    pack = False
+
+    for o, a in opts:
+        if o == "-v":
+            verbose = True
+        elif o in ("-h", "--help"):
+            usage()
+            sys.exit(0)
+        elif o in ("-l", "--list"):
+            listcontent = True
+        elif o in ("-e", "--extract"):
+            extract = True
+        elif o in ("-p", "--pack"):
+            pack = True
+            directory = a
+        elif o in ("-f", "--file"):
+            filename = a
+        else:
+            assert False, "unhandled option"
+
+    if filename == None:
+        usage()
+        sys.exit(1)
+
+
+    try:
+        mz = MyZip(filename)
+        if listcontent == True:
+            mz.listzipcontent()
+        elif extract == True:
+            mz.extractzip()
+        elif pack == True:
+            mz.packdir(directory)
+    except IOError, err:
+        print str(err)
+        sys.exit(1)
+
+
+##########################################################################
+#### RUN
+
+if __name__ == "__main__":
+    main()
+
+
+
+

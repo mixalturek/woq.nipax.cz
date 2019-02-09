@@ -1,0 +1,150 @@
+body
+{
+	background-color: rgb(74, 82, 90);
+	color: white;
+	font-family: Verdana, "Bitstream Vera Sans", Geneva, sans-serif;
+	font-size: 9pt;
+	text-align: justify;
+	line-height: 1.8em;
+	min-width: 540px;
+}
+
+fieldset		{ padding: 10px; }
+img			{ border: none; }
+code			{ text-align: left; }
+pre			{ line-height: 1.3em; max-width: 100%; overflow: auto; }
+table, td, th		{ border: 1px solid rgb(110, 117, 125); }
+
+a, .m			{ color: white; font-style: italic; text-decoration: none; }
+a:hover, .m:hover	{ background-color: #70787F; }
+a.blank:after		{ content: " " url(img/p_blank.gif); }
+a.down:after		{ content: " " url(img/p_down.gif); }
+.invalid_link		{ color: blue; font-weight: bold; }
+.todo			{ color: red; font-weight: bold; }
+.todo:before		{ content: 'TODO: '; }
+span[title]		{ border-bottom: 1px dashed yellow; }
+
+
+#main
+{
+	position: absolute;
+	top: 60px;
+	left: 26%;
+	right: 26%;
+
+	padding-bottom: 50px;/* mezera mezi spodním okrajem */
+}
+
+#banner, #info
+{
+	position: relative;
+	left: 50%;
+	width: 80%;
+	margin-left: -40%;
+
+	line-height: 1.5em;
+	text-align: center;
+}
+
+#banner
+{
+	margin-bottom: 50px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid rgb(110, 117, 125);
+}
+
+#banner a { font-style: normal; }
+
+#info
+{
+	margin-top: 50px;
+	padding-top: 10px;
+	border-top: 1px solid rgb(110, 117, 125);
+}
+
+#left_sidebar
+{
+	position: absolute;
+	top: 180px;
+	left: 6%;
+
+	width: 14%;
+	text-align: right;
+}
+
+#left_sidebar .group a, #sidebar .group .m	{ font-weight: bold; font-style: normal; }
+#left_sidebar div.group				{ margin-bottom: 20px; } /* skupina v menu */
+#left_sidebar div.group div.title		{ border-bottom: 1px solid rgb(110, 117, 125); font-weight: bold; } /*  nadpis menu */
+#left_sidebar div.group a			{ font-weight: normal; }
+
+#right_sidebar
+{
+	position: absolute;
+	top: 180px;
+	left: 80%;
+
+	width: 14%;
+	text-align: left;
+}
+
+#right_sidebar .group a, #sidebar .group .m	{ font-weight: bold; font-style: normal; }
+#right_sidebar div.group			{ } /* skupina v menu */
+#right_sidebar div.group div.title		{ border-bottom: 1px solid rgb(110, 117, 125); font-weight: bold; } /*  nadpis menu */
+#right_sidebar div.group a			{ line-height: 1.6em; float: left; width: 1.7em; height: 1.5em; margin: 3px; text-align: center; border: 1px solid rgb(110, 117, 125); }
+#right_sidebar div.group a			{ font-weight: normal; }
+
+#right_sidebar div.clr	{ clear: both; height: 20px; }
+
+
+
+div.img { margin-bottom: 20px; font-style: italic; text-align: center; }
+
+.cite				{ margin-top: 20px; font-style: italic; }/* citát */
+.cite:before, .cite:after	{ content: "\""; }
+div.author			{ text-align: right; } /* autor článku, citátu ap. */
+div.cl_date			{ text-align: right; } /* datum napsání článku*/
+.warning			{ color: red; } /* upozornění, varování*/
+
+
+div.object		{ border: 1px dotted rgb(110, 117, 125); padding: 10px; margin-top: 20px; margin-bottom: 20px; }
+div.object:hover	{ border: 1px solid rgb(110, 117, 125); }
+div.object div.head	{ min-height: 130px; text-align: left; } /* nadpisy */
+
+div.name		{} /* název*/
+div.date		{} /* datum */
+div.technology		{} /* technologie */
+div.address		{} /* adresa, download */
+div.address_o		{} /* adresa originálu (překlady) */
+div.rate		{} /* hodnocení */
+div.descript		{ margin-top: 10px; } /* popis */
+div.email		{} /* email */
+div.subject		{} /* předmět */
+div.category		{} /* předmět */
+
+div.name:before		{ font-weight: bold; content: "Jméno: "; }
+div.date:before		{ font-weight: bold; content: "Datum: "; }
+div.technology:before	{ font-weight: bold; content: "Technologie: "; }
+div.address:before	{ font-weight: bold; content: "Adresa: "; }
+div.address_o:before	{ font-weight: bold; content: "Adresa originálu: "; }
+div.rate:before		{ font-weight: bold; content: "Hodnocení: "; }
+div.email:before	{ font-weight: bold; content: "Email: "; }
+div.subject:before	{ font-weight: bold; content: "Předmět: "; }
+div.category:before	{ font-weight: bold; content: "Kategorie: "; }
+
+div.object div.head div.img	{ float: right; margin-bottom: 0px; margin-left: 10px; } /* screenshot */
+
+/*
+.gallery		{ margin: auto; }
+.gallend		{ clear: both; }
+.gallitem		{ float: left; margin: 10px; padding: 10px; width: 150px; border: 1px dotted rgb(110, 117, 125); }
+.gallitem:hover		{ border: 1px solid rgb(110, 117, 125); }
+.gallitem div.img	{ margin-bottom: 0px; font-style: italic; text-align: center; }
+*/
+
+.gallery div		{ float: left; border: 1px dotted rgb(110, 117, 125); margin: 10px 10px 0 0; }
+.gallery div:hover	{ border: 1px solid rgb(110, 117, 125); }
+.gallery a		{ display: table-cell; width: 170px; height: 160px; text-align: center; vertical-align: middle; }
+.gallery a:hover	{ background-color: transparent; }
+.gallery img		{ vertical-align: middle; }
+.gallend		{ clear: both; padding: 1em 0; }
+

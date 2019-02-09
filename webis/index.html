@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="iso-8859-2"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs">
+
+<head>
+<title>Webis</title>
+
+<style type="text/css" media="all">
+body
+{
+	margin: 100px 20% 100px 20%;
+	font-family: Verdana, "Bitstream Vera Sans", Geneva, sans-serif;
+	font-size: 9pt;
+	text-align: justify;
+	line-height: 1.8em;
+	background-color: white;
+}
+
+h1		{ text-align: center; }
+table		{ margin: auto; max-width: 100%; }
+tr		{ background-color: rgb(230,230,230); }
+tr:hover	{ background-color: rgb(190,200,230); }
+th, td		{ padding-left: 10px; padding-right: 10px;  }
+th		{ border: 1px solid rgb(160,160,160); }
+a:hover		{ color: red; }
+.img_probl	{ text-align: center; border: 1px solid rgb(235,235,235); padding: 10px; }
+.img_probl:hover{ border: 1px solid gray; }
+.img		{ text-align: center; }
+.autor		{ font-weight: bold; text-align: center; }
+pre		{ text-align: left; overflow: auto; border: 1px solid rgb(235,235,235); padding: 10px; }
+pre:hover	{ border: 1px solid gray; }
+.todo		{ color: red; font-weight: bold; }
+.todo:before	{ content: "TODO: "; }
+.student	{ background-color: rgb(160,160,160); }
+</style>
+
+<style type="text/css" media="print">
+body		{ margin: 0%; }
+</style>
+
+</head>
+
+<body>
+
+<h1>Redesign katederního portálu Webis</h1>
+<p class="autor">Michal Turek</p>
+
+
+<hr />
+
+
+<h2>Zadání práce</h2>
+
+<p>Analyzujte funkčnost stávajícího portálu <a href="http://cs.felk.cvut.cz/webis/">Webis</a>. Navrhněte novou strukturu, která bude lépe reflektovat potřeby jeho uživatelů.</p>
+
+<ul>
+<li>Funkční analýza porálu Webis (seznam funkcí)</li>
+<li>Analýza a popis uživatelů formou cílové skupiny nebo vyrobením person</li>
+<li>Návrh MOCKUPu, např. v PowerPointu, který bude demonstrovat novou strukturu</li>
+</ul>
+
+<p>Cílem není udělat nový grafický desing, to necháme grafikovi. Prvořadým cílem je navrhnout optimální strukturu portálu tak, aby vyhovovala jeho uživatelům. Navrhněte chování navigačních částí, rozdělení informací, vyhledávání.</p>
+
+
+
+<h2>Funkce serveru Webis</h2>
+
+<p>Webový informační systém Katedry počítačů Webis poskytuje svým návštěvníkům informace jak ze současného dění na katedře, tak z její historie. Jednotlivé podkategorie menu <em>O Katedře</em> obsahují informace o struktuře aktuálního vedení, akademických pravidlech, výuce a výzkumu a také o historii katedry od roku 1963 do 2004. Aktuality jsou, kromě novinek zastoupených na hlavní stránce serveru, dostupné také v menu <em>Události</em> a <em>Nabídky</em>.</p>
+
+<p>Základním kamenem obsahu serveru jsou veškeré dostupné informace o lidech působících na katedře a o předmětech, které tito lidé vyučují - jedná se o menu <em>Lidé</em> a <em>Předměty</em>. Přehled a prezentace výzkumných skupin lze najít v menu <em>Výzkum</em>, v obsahu je také seznam jednotlivých projektů a získaných grantů.</p>
+
+
+
+<h2>Současná struktura serveru</h2>
+
+<p>Aktuální strukturu stránek a vztahy mezi nimi zobrazuje schéma na následujícím diagramu. Pro přehlednost jsou na něm uvedeny pouze odkazy mezi hlavními oblastmi webu a nejsou uvedena různá rozbalovací tlačítka.</p>
+
+<div class="img"><img src="img/pavouk.png" alt="Současná struktura serveru" /></div>
+
+<p>Tato struktura webu je na první pohled relativně dobře navržená, trpí však několika nešvary, které nejsou z diagramu vidět. Chce-li například někdo zjistit, jaký je tematický plán předmětu <em>Styk člověka s počítačem</em>, musí provést následující akce.</p>
+
+<ol>
+<li>Otevřít stránky <a href="http://cs.felk.cvut.cz/webis/">Webisu</a></li>
+<li>Kliknout na odkaz <em>Předměty</em> v pravém menu</li>
+<li>V seznamu najít předmět <em>Styk člověka s počítačem</em> a kliknout na něj</li>
+<li>Kliknout na odkaz <em>Podrobnosti</em>, který rozbalí všechny informace</li>
+</ol>
+
+<p>Krokům do třetího bodu není co vytknout, čtvrtý z nich je však redundantní - stránka se měla zobrazit hned na začátku celá, tj. bez zbytečného klikání na tlačítko <em>Podrobnosti</em>. Je velice pravděpodobné, že téměř každý návštěvník bude na toto tlačítko automaticky klikat a tudíž by pro něj bylo mnohem rychlejší, kdyby ho nemusel složitě hledat. Naprosto stejná cesta po webu bude i v případech, kdy návštěvník hledá rozšiřující informace o předmětech, jako je například, kdo je přednáší a cvičí nebo jaká je doporučená literatura.</p>
+
+<p>Podobně zbytečná tlačítka <em>Podrobnosti</em> jsou všudypřítomná po celých webových stránkách, jmenují se například <em>zobrazit všechny...</em> nebo <em>zobrazit...</em>. Jak už bylo řečeno, návštěvníka spíše zdržují, než aby mu nějak výrazně pomáhaly, a proto bude dobré je odstranit.</p>
+
+
+
+<h2>Hlavní problémy stávajícího systému</h2>
+
+<ul>
+<li>Roztříštěnost informací, proč existují v rámci jedné katedry tři různé a z uživatelského hlediska oddělené systémy, jejichž obsah se hodně překrývá? (<a href="http://cs.felk.cvut.cz/webis/">Webis</a>, <a href="http://info336.felk.cvut.cz/">Info 336</a> a <a href="http://service.felk.cvut.cz/">Service</a>)</li>
+
+<li>Použité technologie - všudypřítomný JavaScript, HTML rámce</li>
+
+<li>Web nedodržuje zásadu <strong>HTML definuje obsah, CSS formu</strong>. Konstrukce typu
+<pre>
+&lt;b class=nadp1&gt;&lt;A HREF="../courses/X36ALG.html"
+title="ZOBRAZIT PODROBNOSTI" target=_top&gt;Algoritmizace&lt;/A&gt;&lt;/b&gt;
+&lt;span class=helpm title="kód předmětu"&gt;[X36ALG]&lt;/span&gt;&lt;br&gt;&lt;i&gt;&lt;/i&gt;
+</pre>
+by bylo lepší nahradit za kód níže a ostylovat
+<pre>
+&lt;h1&gt;Algoritmizace &lt;span class="subject_code"&gt;X36ALG&lt;/span&gt;&lt;/h1&gt;
+
+.subject_code:before	{ content: "["; }
+.subject_code:after	{ content: "]"; }
+</pre>
+</li>
+
+<li><a href="http://validator.w3.org/check?uri=http%3A%2F%2Fcs.felk.cvut.cz%2F;charset=%28detect+automatically%29;doctype=Inline;group=0">Stránky nejsou validní</a></li>
+
+<li>S vypnutým JavaScriptem je navigace nepoužitelná, občas je potřebný kompletní reload stránky</li>
+
+<li>Stránka by měla být po načtení vidět celá. Tlačítka pro zobrazení skrytého textu by se měla odstranit, dlouhé stránky lze zpřehlednit vložením obsahu na začátek nebo např. jako plovoucí menu
+<pre>
+&lt;a href="#odkaz"&gt;Položka obsahu&lt;/a&gt;&lt;h3 id="odkaz"&gt;Nadpis&lt;/h3&gt;
+</pre>
+</li>
+
+<li>Web neposkytuje fulltextové vyhledávání</li>
+
+<li>Nejstarší novinky jsou uvedeny nahoře, nejnovější dole, je to nepřehledné</li>
+
+<li>U některých položek menu není dlouhodobě žádný obsah
+<div class="img_probl"><img src="img/p_noitems.png" alt="Žádný obsah" /></div>
+</li>
+
+<li>Položky menu jsou tvořené obrázky, nedá se vyhledávat (ctrl+f), větší datové přenosy, zbytečně zabrané místo v menu - 7 položek v první úrovni je u informačního serveru velice málo
+<div class="img_probl"><img src="img/p_menu.png" alt="Obrázkové položky menu" /></div>
+</li>
+
+<li>Rolovátka rámců se zobrazují i přesto, že nejsou potřeba
+<div class="img_probl"><img src="img/p_scrollbars.png" alt="Zbytečná rolovátka u rámce" /></div>
+</li>
+
+<li>Problémy s rolováním pomocí kolečka myši! Některá rolovátka jsou implementovaná v JavaScriptu, rolování kolečkem nefunguje např. ve Firefoxu, v Opeře sice ano, ale poloha scrollbaru se nemění
+<div class="img_probl"><img src="img/p_scrollbarsopera.png" alt="JavaScriptové rolovátko v Opeře" /></div>
+</li>
+
+<li>Bílý text na bílém pozadí a navíc v obrázcích není vhodný, přečtení umožňuje pouze stín, špatně použitelné pro osoby se zrakovým postižením
+<div class="img_probl"><img src="img/p_whitewhite.png" alt="Bílý text na bílém pozadí" /></div>
+</li>
+
+<li>Nekonzistentnost v barvě textu, většinou je černý, občas šedý - ten je navíc na bílém pozadí špatně čitelný
+<div class="img_probl"><img src="img/p_blackgray.png" alt="Šedý text na černém pozadí" /></div>
+</li>
+
+<li>Na určitých místech webu se naprosto bezdůvodně mění font a velikost textů
+<div class="img_probl"><img src="img/p_fonts.png" alt="Šedý text na bílém pozadí" /></div>
+</li>
+
+<li>Menu se otevírá zprava doleva, za určitých situací je levá polovina stránky prázdná
+<div class="img_probl"><img src="img/p_leftempty.png" alt="Levá polovina stránky je za určitých okolností prázdná" /></div>
+</li>
+
+</ul>
+
+
+
+<h2>Návrhy na vylepšení stávajícího systému bez implementace nového</h2>
+
+<p>Jak už bylo řečeno v minulých kapitolách, je současný návrh struktury serveru obecně vyhovující, z tohoto důvodu ho není nutné nijak zásadně měnit, ale spíše pouze vylepšit několik detailů. Snad jedinou výraznější změnou v navigaci bude odstranění všech tlačítek typu <em>Podrobnosti</em>, která na stránce rozbalují rozšiřující informace, vše by mělo být vidět hned po načtení.</p>
+
+<p>Problémem serveru není ani tak špatně navržená struktura stránek, jako spíše nevhodná volba některých použitých technologií - typicky naprosto zbytečný JavaScript - a ne zrovna šťastně volená forma prezentace informací a jejich nestandardní umístění na stránce.</p>
+
+<p>Za všechno lze uvést systém menu, který se postupně rozbaluje zprava doleva a ne zleva doprava, jak by každý očekával. Někdy se po kliknutí na položku menu zobrazuje pouze podmenu a vlastní stránka zůstává prázdná. V takovém případě je více než polovina obrazovky vlevo, na kterou vždy oči ulpí nejdříve, kompletně prázdná.</p>
+
+<p>Dalším problémem jsou samotné položky menu tvořené obrázky namísto obyčejného textu. Jsou sice čitelné, ale bílý text na téměř bílém pozadí není příliš šťastná volba. Kromě toho jsou jednotlivé obrázky/položky zbytečně velké, a tudíž umožňují zobrazit méně informací než by jinak bylo možné - jedenáct odkazů v hlavním menu je pro informační server velice málo. Přidáním nových, vhodně volených, odkazů by se dalo urychlit nalezení informací hledaných návštěvníkem.</p>
+
+<p>Výrazným problémem je absence fulltextového vyhledávání, mnoho lidí mu dává přednost před vyhledáváním v katalogu. Toto by se však dalo provizorně, avšak velice efektivně, vyřešit vložením vyhledávacího formuláře, který by přesměrovával na vyhledávač Google s parametrem <em>site</em>.</p>
+
+<pre>
+http://www.google.com/search?q=site:cs.felk.cvut.cz%20HLEDANÉ HESLO
+</pre>
+
+
+
+<h2>Návrh nového serveru</h2>
+
+<p>Následující text obsahuje tématické okruhy, které by měl pokrývat nově navrhovaný systém, tento víceúrovňový seznam je možné považovat jako vodítko k vytvoření nové struktury menu. Nový systém bude sloučením stávajícího Webisu a Infa336, dva oddělené systémy se už dále spíše neuvažují. (Pozn.: Velká část tohoto textu vznikla při hromadném brainstormingu řešitelů projektu.)</p>
+
+<ol>
+<li>Uživatelé
+	<ul>
+	<li>Fotografie, kontakt</li>
+	<li>Rozvrh hodin, pokud možno ne odkaz, ale přímo ve stránce</li>
+	<li>Co učí, co dělá, jaké má zkušenosti, praxe, publikace, konference, projekty, kde sídlí, kontaktní info</li>
+	<li>Může si editovat sám</li>
+	</ul>
+</li>
+
+<li>Předměty
+	<ul>
+	<li>Seznam, vyhledávání podle názvů předmětů i zkratek</li>
+	<li>Osnova, kam patří (ročník), semestr, ZSF, studijní plán, vyhledávání, struktura podle studijního plánu, doporučené návaznosti, prerekvizity, kdo to učí, statistiky</li>
+	<li>Podpora výuky (něco jako service)</li>
+	<li>Požadavky na ukončení předmětů</li>
+	<li>Témata semestrálních prací</li>
+	</ul>
+</li>
+
+<li>Sekce pro uchazeče
+	<ul>
+	<li>Co to je fakulta, katedra?</li>
+	<li>Co to je kredit, kreditní systém?</li>
+	<li>Kdo to je rektor, jaké jsou etapy studia, jaké jsou formy studia</li>
+	<li>Ukázkový průchod studiem pro studenta katedry počítačů</li>
+	<li>Uplatnění po škole</li>
+	<li>Alumni, udržování komunity, kontakty, kariéra</li>
+	</ul>
+</li>
+
+<li>Obecné statistiky ohledně školy
+	<ul>
+	<li>Průchodnost studiem, počty studentů, zaměstnanců, doktorandů</li>
+	<li>Tabulky, grafy</li>
+	</ul>
+</li>
+
+<li>Aktuality
+	<ul>
+	<li>Konference, výstavy</li>
+	<li>Extra přednášky, studentské akce, informace o provozu a studiu</li>
+	<li>Deadlines, dny otevřených dveří, veřejné akce, granty, obhajoby, soutěže</li>
+	<li>Některé aktuality jsou veřejné, některé jen pro vnitřní potřebu (různé cílové skupiny)</li>
+	<li></li>
+	</ul>
+</li>
+
+<li>Výzkumné skupiny
+	<ul>
+	<li>Název, co dělají, kdo tam patří, odkazy na akce, publikace členů, vědecké výsledky</li>
+	<li>Porovnání s jinými skupinami</li>
+	<li>Tematické okruhy, granty řešené skupinou</li>
+	<li>Nabídka spolupráce, odkaz na stránky dané skupiny</li>
+	<li>Interní informace pro členy skupiny</li>
+	<li>Vyučované předměty</li>
+	</ul>
+</li>
+
+<li>Granty
+	<ul>
+	<li>Seznam běžících grantů, seznam lidí, seznam grantových agentur</li>
+	<li>Interní info, jak grant získat</li>
+	<li>Kalendář deadline pro granty</li>
+	</ul>
+</li>
+
+<li>Závěrečné práce
+	<ul>
+	<li>Všeobecné informace, tematické okruhy</li>
+	<li>Diplomové a bakalářské práce, disertace, inidividuální projekty, další projekty</li>
+	<li>Zadávání témat</li>
+	<li>Pokyny pro psaní</li>
+	<li>Odevzdávání, vystavování na webu - asi jenom abstrakt, odkaz na <a href="http://dip.felk.cvut.cz/">http://dip.felk.cvut.cz/</a></li>
+	<li>Tisk a vazba</li>
+	</ul>
+</li>
+
+<li>O katedře
+	<ul>
+	<li>Historie katedry</li>
+	<li>Struktura - vedení, gremium, administrativa</li>
+	<li>Vybavení, majetek</li>
+	<li>Virtuální průvodce katedrou, hledání učeben (něco ve stylu <a href="http://student.cvut.cz/pruvodceFEL/">http://student.cvut.cz/pruvodceFEL/</a>)</li>
+	<li>Kontaktní informace, adresa, atd., podobně, jako to bývá na různých firemních stránkách</li>
+	<li>Mapy (Karlovo náměstí, Dejvice)</li>
+	</ul>
+</li>
+
+<li>Fotogalerie
+	<ul>
+	<li>Učebny, vybavení</li>
+	<li>Přístroje, hardware</li>
+	<li>Dostatečné rozlišení, zajímavé detaily</li>
+	<li>Fotografie z výuky - aby to nebyly jen prázdné místnosti</li>
+	</ul>
+</li>
+
+<li>Provozní záležitosti
+	<ul>
+	<li>Uživatelská konta, hesla (zřizování, prodlužování), pošta</li>
+	<li>Studentské licence software, MSDN AA, pokud možno kompletní seznam v rámci celého FEL a ČVUT</li>
+	<li>Konfigurace wifi, ethernet</li>
+	<li>Karetní přístupový systém</li>
+	</ul>
+</li>
+
+<li>FAQ
+	<ul>
+	<li>Rozcestník na důležitá, často dotazovaná témata</li>
+	<li>Uživatelská konta, změny hesel, hledání učeben...</li>
+	<li>Postupně updatovat</li>
+	</ul>
+</li>
+
+<!--
+<li>
+	<ul>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	</ul>
+</li>
+-->
+</ol>
+
+
+<h2>Kategorie uživatelů</h2>
+
+<p>Návštěvníci serveru Webis se dají obecně rozdělit do několika kategorií.  (Pozn.: Velká část následující tabulky vznikla při hromadném brainstormingu řešitelů projektu.)</p>
+
+<ul>
+<li>Uchazeč o studium (bakalářské, magisterské, doktorské)</li>
+<li>Student (český, zahraniční)</li>
+<li>Učitel</li>
+<li>Doktorand</li>
+<li>Zaměstnanec (neučící)</li>
+<li>Studijní referentka</li>
+<li>Cizí výzkumník, odborník (český, zahraniční)</li>
+<li>Ostatní návštěvníci</li>
+</ul>
+
+<table>
+<tr><td></td> <th>Uchazeč o&nbsp;studium<br />5%</th> <th class="student">Student<br />100%</th> <th>Učitel<br />90%</th> <th>Doktorand<br />95%</th> <th>Zaměstnanec (neučící)<br />25%</th> <th>Studijní referentka<br />1 osoba</th> <th>Cizí výzkumník, odborník<br />1%</th></tr>
+<tr><th>Aktuality</th>			<td>2</td> <td class="student">5</td> <td>4</td> <td>4</td> <td>3</td> <td>5</td> <td>1</td> </tr>
+<tr><th>Seznam lidí</th>		<td>1</td> <td class="student">5</td> <td>4</td> <td>4</td> <td>3</td> <td>3</td> <td>3</td> </tr>
+<tr><th>Předměty</th>			<td>2</td> <td class="student">5</td> <td>2</td> <td>4</td> <td>1</td> <td>2</td> <td>1</td> </tr>
+<tr><th>Obecné statistiky</th> 		<td>5</td> <td class="student">4</td> <td>2</td> <td>2</td> <td>1</td> <td>1</td> <td>1</td> </tr>
+<tr><th>Sekce pro uchazeče</th>		<td>2</td> <td class="student">3</td> <td>1</td> <td>1</td> <td>1</td> <td>2</td> <td>1</td> </tr>
+<tr><th>Výzkumné skupiny</th>		<td>1</td> <td class="student">3</td> <td>3</td> <td>3</td> <td>1</td> <td>1</td> <td>5</td> </tr>
+<tr><th>Granty</th>			<td>1</td> <td class="student">3</td> <td>5</td> <td>5</td> <td>2</td> <td>1</td> <td>4</td> </tr>
+<tr><th>Závěrečné práce</th>		<td>1</td> <td class="student">5</td> <td>5</td> <td>5</td> <td>1</td> <td>4</td> <td>1</td> </tr>
+<tr><th>O katedře</th>			<td>5</td> <td class="student">2</td> <td>2</td> <td>2</td> <td>1</td> <td>1</td> <td>4</td> </tr>
+<tr><th>Fotogalerie</th>		<td>5</td> <td class="student">3</td> <td>2</td> <td>2</td> <td>1</td> <td>1</td> <td>2</td> </tr>
+<tr><th>Provozní záležitosti</th>	<td>3</td> <td class="student">5</td> <td>5</td> <td>5</td> <td>5</td> <td>2</td> <td>1</td> </tr>
+<tr><th>FAQ</th>			<td>1</td> <td class="student">5</td> <td>3</td> <td>4</td> <td>2</td> <td>4</td> <td>1</td> </tr>
+<!--
+<tr><th></th>				<td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+-->
+</table>
+
+<p>Legenda k tabulce: <strong>1 = malá váha, 5 = důležité</strong></p>
+
+
+<p>Kategorie studentů by se mohla rozdělit na zájemce o studium, studenty nižších a vyšších ročníků + doktoranty, studenty, kteří chtějí/nechtějí dostudovat, české/zahraniční studenty a podobně. Tato práce se bude dále zaměřovat primárně na české studenty magisterského studijního programu z Katedry počítačů, kteří chtějí dostudovat. Ostatní uvažované kategorie a podkategorie uživatelů budou přenechány jiným řešitelům této práce.</p>
+
+
+
+<h3>Dialog s uživateli z řad studentů</h3>
+
+<p>Pozn.: Následující text může vyznít hodně kriticky a negativně, ale dávám přednost nepřikrášlování méně vhodné skutečnosti. Webis se bude předělávat, a proto by mělo být důležité vědět, v čem spočívají hlavní problémy současné verze...</p>
+
+<p>V průběhu vypracovávání práce byl proveden velice neformální průzkum mezi cca. 10 uživateli stávajícího systému Webis z řad studentů magisterské etapy studia - všichni z Katedry počítačů. Prvním a velice překvapivým poznatkem je, že naprostá většina z nich o systému Webis nikdy neslyšela! Když jim byla poskytnuta nápověda, že se jedná o oficiální web Katedry počítačů, tak se překvapeně ptali, zda <em>něco takového opravdu existuje a kde to mohou najít?</em> Server Info336 naopak znali bez výjimky všichni studenti, ale na druhou stranu jeho návštěvnost limituje k nule. Je to dáno tím, že zde byly veškeré dostupné informace o bakalářských pracích, které dělali ještě relativně nedávno.</p>
+
+<p>Další komunikace tedy směřovala na téma, <em>kde hledají informace o učitelích a předmětech?</em> Odpověďmi bylo, že nejčastěji používají systém KOS a dále stránky s <a href="http://www.fel.cvut.cz/education/rozvrhy.html">fakultními rozvrhy</a> (respektive přímo <a href="http://udb.feld.cvut.cz/">http://udb.feld.cvut.cz/</a>) a také <a href="http://www.feld.cvut.cz/cz/education/bk/">fakultní studijní programy</a>. Výhoda druhéhu uvedeného systému je prý především v tom, že stačí znát jméno osoby nebo předmětu (to znají, jinak by to nehledali), zadat je do políčka fulltextového vyhledávání a hned mají všechny požadované informace. Tady je důležité podotknout, že tyto systémy vyhledávají přes kompletně celou fakultu a ne jen na Katedře počítačů, což je také jistě jejich nesporná výhoda. Jen poznamenám, že Webis v současnosti žádné fulltextové vyhledávání neposkytuje!</p>
+
+<p>Po tomto úvodu byly v prohlížeči zobrazeny stránky Webisu. Přibližně polovině účastníků se vybavilo, <em>že už je kdysi viděli</em>, ale nedokázali říct v podstatě nic o jejich obsahu. Po prvním kliknutí do menu upřesnili <em>jo, to je tohle..., to se vůbec nedalo používat</em> a poté někteří nevěřícně pokračovali <em>to jsou opravdu oficiální stránky Katedry počítačů?!</em></p>
+
+<p>Dále byla položena otázka ve stylu <em>k čemu Webis používáte</em>, resp. <em>co jste zde tehdy hledali za informace</em>. Odpověďmi bylo, že občas, například při vytváření rozvrhů nebo na některých stránkách předmětů na Service, kliknou na nějaký odkaz a ten je přesměruje na Webis. Ale <em>hned, jak si uvědomí modré obrázkové menu vpravo</em>, tak tuto záložku většinou automaticky zavírají, protože si vzpomenou na předchozí neúspěšné návštěvy.</p>
+
+<p>Tři účastníci průzkumu dále uvedli, že na Webisu občas (<em>hodně občas</em>) hledají informace o vyučujících, konkrétně je zajímají především jejich fotografie. <em>Proč zrovna fotografie?!</em> Aby mohli učitele &quot;odhadnout&quot;, když si vytvářejí rozvrh nebo když jdou k někomu neznámému na zkoušku. <em>Tato funkce na žádném jiném fakultním serveru neexistuje</em>.</p>
+
+<p>Obecně se dá říci, že účastníci rozhovoru server Webis téměř nepoužívají a obsahově ho vůbec neznají - po zobrazení stránky si ve většině případů vzpomněli, že něco takového už někdy dříve viděli, ale to je v podstatě vše, co o něm dokázali říct.</p>
+
+
+<h2>Bc. Jáchym Vomáčka (persona)</h2>
+
+<div class="img" style="float: right;"><img src="img/jachym.jpg" alt="Ing. Jáchym Vomáčka" /></div>
+
+<ul>
+<li>22 let</li>
+<li>1. ročník magisterského studia na FEL ČVUT</li>
+<li>Pracuje na částečný úvazek jako programátor v jazyce C++</li>
+<li>Bydlí na kolejích Strahov, domů jezdí jednou za měsíc</li>
+<li>U počítače tráví pravidelně 10 hodin denně a více</li>
+<li>Nedá dopustit na svůj operační systém Debian GNU/Linux</li>
+<li>Bez problémů počítá v šestnáctkové soustavě</li>
+<li>Na svých webových stránkách má fotografii ve formě ascii artu</li>
+</ul>
+
+<p>Jáchym se narodil v Hodoníně a spolu se svou sestrou a rodiči tam žil do doby, než po střední škole odešel studovat do Prahy na FEL ČVUT. Spolu s ním šli do Prahy i jeho dva kamarádi Petr a Mirek, nicméně Petr dostal koleje na Bubenči místo na Strahově, a postupem času se s Jáchymem trochu odcizili. Mirek odešel kvůli matematice a obvodům hned v prvním semestru. Jáchym úspěšně zvládl tři roky studia, stal se bakalářem a nyní pokračuje dále na magisterském studiu.</p>
+
+<p>Ke konci druhého ročníku si našel práci programátora v jazyce C++ u jedné softwarové firmy. Poslední dobou ho to však docela zmáhá - pro samou práci, školu, písemky a semestrálky mu připadá, že v podstatě nežije a <em>furt jenom mžourá do tý bedny plný permoníků</em>, jak s oblibou říkává. Nicméně samozřejmě ví, že v počítači žádní permoníci nejsou (nikdy by to však veřejně nepřiznal), ale že tam je spousta hradel, nul a jedniček. Když slyší číslo 32, automaticky ho napadne <em>mezera</em>, a když mu před nedávnem v práci při přečíslování změnili telefon na linku 256, tak byl strašně rád, že to je takové hezké, kulaté a snadno zapamatovatelné číslo.</p>
+
+<p>Jáchym nedá dopustit na svůj, sice postarší, ale po sotwarové stránce vytuněný počítač. S Linuxem začal už na střední, tehdy ještě s Mandrakem, teď už však několik let používá Debian a nemůže si ho vynachválit. Návštěvy občas překvapí stěna polepená tučňáky, ale ty jsou tam jenom proto, že kdysi dostal od kamaráda kalendář a chtěl překrýt pošpiněnou strahovskou stěnu. Bohužel ještě nikdy o tom nikoho nepřesvědčil.</p>
+
+<p>Kamarádi mu občas říkají, že je workoholik a maminka by byla nejradši, kdyby dostudoval a k práci se vrátil až po škole, nicméně Jáchymovi vyhovuje být nezávislý a k tomuto kroku se nejspíš nikdy neodhodlá. Důsledkem toho je i to, že se intervaly ježdění domů neustále prodlužují a v současnosti je to něco kolem jedenkrát do měsíce.</p>
+
+
+
+<h2>Prototyp nového Webisu</h2>
+
+<p>Nově navrhovaný systém by měl odstranit, pokud možno, všechny problémy zmíněné v kapitole "Hlavní problémy stávajícího systému". <a href="prototyp/index.htm">Prototyp nového Webisu</a> byl vytvořen ve formě HTML stránek bez rámců a JavaScriptů, které jsou plně generované na serveru v jazyce PHP a následně exportovány do samostatných HTML souborů.</p>
+
+<p>Jednotlivé stránky se skládají z celkem sedmi částí. V hlavičce je na levé straně logo katedry, uprostřed český a anglický název, vpravo je možné přepnout jazyk a samozřejmě nesmí chybět políčko pro fulltextové vyhledávání. To ve stávající verzi pouze přesměrovává na vyhledávač Google (není dostupné v offline HTML).</p>
+
+<p>Střední část nalevo poskytuje hlavní dvouúrovňové menu stránek, prostřední část obsahuje vlastní text stránky a v pravé části je kontextové menu, jež obsahuje kotvy na nadpisy v hlavním textu stránky - jedná se defakto o obsah. Poslední, sedmá, část stránky je patičkou s copyrightem.</p>
+
+<p>V prototypu není zpracován kompletně celý Webis, ale jen některé jeho části. Konkrétně se jedná o sekce Index, Kontakt, Lidé a Předměty. Nebyl brán zřetel ani tak na grafickou stránku věci, jako spíše na přehlednost a dostupnost informací. Prototyp také nemusí plně fungovat ve všech prohlížečích - nebyl testován textový linx/links a kvůli nedostupnosti ani Safari, v Internet Exploreru některé linky dělící stránku plně nenavazují. V Opeře, Konqueroru a Firefoxu by se měl prototyp zobrazovat bez problémů. Poslední uvedený prohlížeč navíc podporuje sloupce z CSSx, které jsou použité například při výpisu seznamu lidí nebo předmětů a výrazně zpřehledňují jeho zobrazení.</p>
+
+<div class="img" title="Starý webis">
+<a href="img/oldwebis1.png"><img src="img/oldwebis1_sm.png" alt="Starý webis"></a>
+<a href="img/oldwebis2.png"><img src="img/oldwebis2_sm.png" alt="Starý webis"></a>
+</div>
+
+<div class="img" title="Prototyp nového Webisu">
+<a href="img/newwebis1.png"><img src="img/newwebis1_sm.png" alt="Prototyp nového Webisu"></a>
+<a href="img/newwebis2.png"><img src="img/newwebis2_sm.png" alt="Prototyp nového Webisu"></a>
+</div>
+
+
+<h2>Testování</h2>
+
+<p>Pro tuto práci byl původně předpokládán řešitelský tým dvou lidí. Z tohoto důvodu vedoucí práce, pan Martin Klíma, umožnil, aby samostatní řešitelé nemuseli provádět usability testy.</p>
+
+<p>Testování spočívalo v kognitivním průchodu pomocí persony. Úkolem bylo najít rozvrh hodin Ing. Jana Žďárka a jméno přednášejícího předmětu Y36UOS. Nebyly zaznamenány žádné problémy v použitelnosti, ani jak pomocí fulltextového vyhledávání tak pomocí průchodu katalogem.</p>
+
+
+<h2>Závěr</h2>
+
+<p>V této práci byl analyzován stávající informační systém katedry počítačů Webis a na základě této analýzy byl navržen systém nový, který se pokouší vyřešit jeho problémy.</p>
+
+<p>Hlavními změnami v systému jsou především použité technologie, všechny stránky by se měly kompletně generovat na serveru a neměl by se používat klientský JavaScript. Dále bylo navrženo nové rozvržení layoutu stránek a navigace mezi nimi. Neméně podstatnou změnou je také přidané fulltextové vyhledávání, které je důležité vzhledem k technicky zaměřené cílové skupině uživatelů.</p>
+
+</body>
+</html>

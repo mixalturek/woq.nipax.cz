@@ -1,0 +1,5 @@
+body		{ background-color: white; }
+#page		{ margin: 0; width: 100%; float: none; }
+
+#sidebar, #copyright, #usercomments { display: none; }
+

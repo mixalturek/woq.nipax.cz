@@ -1,0 +1,24 @@
+<div class="comment">
+<div class="datetime">Mon, 30 Mar 09 09:15:33 +0200</div>
+<h3>...114.60</h3>
+<p>Odkaž ho na webtrh.cz, tam si ho vychutnají :)</p>
+</div><!-- div class="comment" -->
+
+<div class="comment">
+<div class="datetime">Mon, 30 Mar 09 16:37:59 +0200</div>
+<h3>LuCiNQa*</h3>
+<p>AhA trapnee!! xD</p>
+</div><!-- div class="comment" -->
+
+<div class="comment">
+<div class="datetime">Fri, 03 Apr 09 02:25:47 +0200</div>
+<h3>tlw</h3>
+<p>Omafagád !!!11 to je hutny :D</p>
+</div><!-- div class="comment" -->
+
+<div class="comment">
+<div class="datetime">Sun, 19 Apr 09 02:48:02 +0200</div>
+<h3>Jaycop</h3>
+<p>C++ a weby... tomu říkám kombinace :D</p>
+</div><!-- div class="comment" -->
+

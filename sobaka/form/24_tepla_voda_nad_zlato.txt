@@ -1,0 +1,17 @@
+<div class="comment">
+<div class="datetime">Wed, 27 May 09 16:49:55 +0200</div>
+<h3>misko</h3>
+<p>cece tak ja dufam ze sa z ruska vratis mentalne v poriadku .. musim konstatovat ze s casom sa prispevky po tebe citaju horsie a horsie ů=0</p>
+</div><!-- div class="comment" -->
+
+<div class="comment">
+<div class="datetime">Thu, 28 May 09 14:09:45 +0200</div>
+<h3>Michal</h3>
+<p>Ja vim, rikal jsem si, ze tam je ty rustiny uz trochu vic, ale nam uz to tady uz neprijde, tak sorry, polepsim se. Ona se blbe odhaduje hranice, do ktery cizi slova zpestrujou a za kterou se stava text hur citelny :-(</p>
+</div><!-- div class="comment" -->
+
+<div class="comment">
+<div class="datetime">Sat, 30 May 09 15:48:57 +0200</div>
+<h3>tlw</h3>
+<p>budes si zadat o prodlouzeni viza? ;]</p>
+</div><!-- div class="comment" -->

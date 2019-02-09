@@ -1,0 +1,6 @@
+<div class="comment">
+<div class="datetime">Mon, 23 Mar 09 17:50:47 +0100</div>
+<h3>...114.60</h3>
+<p>Co jsi odjel, tak mi začaly obden chodit zprávy v azbuce. Materiály jsou to slušné, ale ne zrovna perspektivní.</p>
+</div><!-- div class="comment" -->
+

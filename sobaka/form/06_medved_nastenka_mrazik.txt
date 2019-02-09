@@ -1,0 +1,18 @@
+<div class="comment">
+<div class="datetime">Sun, 08 Feb 09 15:16:18 +0100</div>
+<h3>tlw</h3>
+<p>Cau draku :] Mam obrovskou starost, a tak se musim optat: Na tej prvni fotce mas ocividne ZIMNI bundu!! Jinak je ti dobre? Protoze tohle neni normalni.. Doufam, ze mas pod ni maximalne tricko s kratkym rukavem :P</p>
+</div><!-- div class="comment" -->
+
+<div class="comment">
+<div class="datetime">Sun, 08 Feb 09 18:17:58 +0100</div>
+<h3>...114.60</h3>
+<p>Ale to ne, jak znám Michala, tak má pod ní košili :))</p>
+</div><!-- div class="comment" -->
+
+<div class="comment">
+<div class="datetime">Wed, 11 Feb 09 14:46:18 +0100</div>
+<h3>Michal</h3>
+<p>Hmmm, ted si nejsem jisty, ono je to uz trochu zpatky, ale obecne bych rekl, ze i triko s kratkym rukavem by se pod tou bundou dalo najit. Momentalne jsou mym standardnim oblecenim dve tricka, svetr, sala, bunda - vzdycky nadavam, kdyz se oblikam :-(. Minus tricet, a jak jsem pred chvili zjistil, stejny teploty budou jeste min. dva tydny, fnuk :-(</p>
+</div><!-- div class="comment" -->
+

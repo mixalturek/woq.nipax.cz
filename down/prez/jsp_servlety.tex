@@ -1,0 +1,168 @@
+\documentclass{beamer}
+
+\mode<presentation> {
+  \usetheme{Warsaw}
+  \setbeamercovered{transparent}
+}
+
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage{czech}
+\usepackage{palatino}
+\usepackage{graphicx}
+
+\title{Java na webovém serveru}
+\author{Michal Turek}
+\institute[US JAK]{FEL ČVUT Praha}
+\date{~8.~9.~2006}
+
+\begin{document}
+
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Osnova}
+  \tableofcontents
+\end{frame}
+
+
+\section{Webové servery}
+
+\begin{frame}
+  \frametitle{Webové servery}
+    \begin{itemize}
+      \item {\bf Tomcat}, Apache + Tomcat
+      \item Java Server Web Development Kit (JSWDK)
+      \item Allaire JRun
+      \item ServletExec
+      \item LiteWebServer (LWS)
+      \item Java Web Server
+    \end{itemize}
+\end{frame}
+
+
+\section{Servlety}
+
+\subsection{Servlety - Hello, World!}
+
+\begin{frame}
+  \frametitle{Servlety - Hello, World!}
+import java.io.*;\\
+import javax.servlet.*\\
+import javax.servlet.http.*\\
+public class HelloWorld extends HttpServlet\\
+\{\\
+\ \ \ \ public void doGet(HttpServletRequest request,\\
+\ \ \ \ \ \ \ \ \ \ HttpServletResponse response)\\
+\ \ \ \ \ \ \ \ \ \ throws ServletException, IOException\\
+\ \ \ \ \{\\
+\ \ \ \ \ \ \ response.setContentType("text/html");\\
+\ \ \ \ \ \ \ PrintWriter out = response.getWriter();\\
+\ \ \ \ \ \ \ out.println("$<$html$>$...Hello, World!...$<$/html$>$");\\
+\ \ \ \ \}\\
+\}\\
+\end{frame}
+
+
+\subsection{Přeložení a spuštění}
+
+\begin{frame}
+  \frametitle{Přeložení a spuštění}
+    \begin{itemize}
+      \item Nastavení systémové proměnné CLASSPATH, aby obsahovala cesty k potřebným knihovnám
+      \item CLASSPATH='/opt/jre1.5.0/lib:\\/usr/share/tomcat4/common/lib/servlet.jar'
+      \item javac HelloWorld.java
+      \item Zkopírování HelloWorld.class do adresáře webového serveru
+      \item Restart webového serveru (nemusí být nutný)
+      \item Test v prohlížeči
+    \end{itemize}
+\end{frame}
+
+
+\subsection*{Porovnání servletů a CGI}
+
+\begin{frame}
+  \frametitle{Porovnání servletů a CGI}
+    \begin{itemize}
+      \item Snadněji se používají
+      \item Většina věcí ve standardních knihovnách
+      \begin{itemize}
+        \item Dekódování GET a POST parametrů
+        \item Sessions
+        \item Cookies
+        \item ...
+      \end{itemize}
+      \item Mnohem přenositelnější
+      \item Účinnější (místo procesů vlákna)
+      \item Výkonější
+      \item Pouze jazyk Java
+    \end{itemize}
+\end{frame}
+
+
+\section{Java Server Pages}
+
+
+\subsection{Obecně o JSP}
+
+\begin{frame}
+  \frametitle{Java Server Pages}
+    \begin{itemize}
+      \item Podobné technologiím PHP, ASP, SSI
+      \item Zdrojové kódy se píší do speciálně formátované webové stránky
+      \item Při prvním přístupu uživatelem se JSP stránka automaticky přeloží na servlet
+      \item Možnost použití JavaBeans
+      \item Možnost vytvoření vlastních značek JSP
+    \end{itemize}
+\end{frame}
+
+
+\subsection{Skriptovací značky JSP}
+
+\begin{frame}
+  \frametitle{Skriptovací značky JSP}
+    \begin{itemize}
+      \item $<$\%= výraz \%$>$ - výstup textu
+      \item $<$\% kód \%$>$ - skriptlety (analogie PHP)
+      \item $<$\%! kód \%$>$ - deklarace metod, globálních proměnných
+      \item $<$\%-- výraz \%$>$ - komentář, který se nedostane ze serveru
+    \end{itemize}
+\end{frame}
+
+
+\subsection*{JSP - Hello, World!}
+
+\begin{frame}
+  \frametitle{JSP - Hello, World!}
+$<$\%@ page contentType="text/html; charset=ISO-8859-2" \%$>$\\
+$<$html$>$\\
+\ \ $<$head$>$\\
+\ \ \ \ $<$title$>$Hello, World!$<$/title$>$\\
+\ \ $<$/head$>$\\
+\ \ $<$body$>$\\
+\ \ \ \ $<$h1$>$Hello, World!$<$/h1$>$\\
+\ \ \ \ $<$p$>$Čísla: {\bf $<$\% for(int i=0; i$<$10; i++) out.print(i); \%$>$}$<$/p$>$\\
+\ \ \ \ $<$p$>${\bf $<$\%! private int num=0; \%$>$}$<$/p$>$\\
+\ \ \ \ $<$p$>$Počet přístupů: {\bf $<$\%= ++num; \%$>$}$<$/p$>$\\
+\ \ $<$/body$>$\\
+$<$/html$>$
+\end{frame}
+
+
+\section*{Literatura}
+
+\begin{frame}
+	\frametitle{Literatura}
+	\begin{itemize}
+		\item Bruce Eckel: Thinking in Java
+		\item Marty Hall: Java - Servlety a stránky JSP
+	\end{itemize}
+\end{frame}
+
+
+\end{document}
+
